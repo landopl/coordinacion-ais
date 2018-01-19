@@ -17,9 +17,9 @@ use App\Http\Requests\proyectosRequest;
 
 class proyectosControlador extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $proyectos          = proyecto::orderBy('id', 'ASC')->paginate(1);
+        $proyectos          = proyecto::BuscarProyecto($request->titulo)->orderBy('id', 'ASC')->paginate(1);
         $proyectos_tipo     = proyecto_tipo::all();
         $proyectos_nombre   = proyecto_nombre_tipo::all();
         $fechas_registro    = fecha_registro_proyecto::all();
@@ -42,11 +42,10 @@ class proyectosControlador extends Controller
 
     public function create()
     {
-        $lineas = linea_investigacion::all();
+        $lineas = linea_investigacion::orderBy('denominacion', 'ASC')->pluck('denominacion', 'id');
         $lineas->toArray();
-        $tipo_proyectos = proyecto_nombre_tipo::all();
-        $tipo_proyectos->toArray();
-
+        $tipo_proyectos = proyecto_nombre_tipo::orderBy('tipo_proyecto', 'ASC')->pluck('tipo_proyecto', 'proyecto_tipo_id');
+        
         return view('admin.proyectos.crear', [
             'lineas'         => $lineas, 
             'tipo_proyectos' => $tipo_proyectos

@@ -48,5 +48,10 @@ class proyecto extends Model
     {
         return $this->hasMany('App\fecha_registro_proyecto');
     }
+
+    //----------SCOPE (BUSCAR)------------------------------
+    public function scopeBuscarProyecto($query, $titulo){
+        return $query->where('titulo', 'LIKE', "%$titulo%");
+    }
 }
 	

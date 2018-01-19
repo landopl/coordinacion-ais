@@ -31,7 +31,7 @@ class coordinadoresControlador extends Controller
 
     public function create()
     {
-        $lineas = linea_investigacion::all();
+        $lineas = linea_investigacion::orderBy('denominacion', 'ASC')->pluck('denominacion', 'id');
 
         return view('admin.coordinadores.crearCoordinadores', ['lineas' => $lineas]);
     }

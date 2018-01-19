@@ -43,23 +43,13 @@
 			</div>
 
 			<div class="form-group">
-				<select class="col-xs-offset-3" name="linea">
-					<option>Seleccione la linea de investigacion</option>
-					@foreach($lineas as $linea)
-						<option value="{{$linea->id}}">{{$linea->denominacion}}</option>
-					@endforeach
-				</select>
+				{!! Form::label('denominacion', 'Linea de investigacion', ['class' => 'control-label col-xs-3']) !!}
+				{!! Form::select('denominacion', $lineas, null, ['class' => 'col-sm-5','placeholder' => 'Seleccione una linea de investigacion','required']) !!}
 			</div>
 
 			<div class="form-group">
-				<div class="col-xs-offset-3 col-xs-9">
-					<label class="radio-inline">			
-						<b>{{ 'Seleccione el tipo de investigador' }}</b><br>
-						@foreach($tipos as $tipo)
-							<input type="radio" name="tipo_id" value= {!! $tipo['tipo_id'] !!} checked>{{ $tipo['tipo_investigador']}}<br>
-						@endforeach
-					</label>
-				</div>
+				{!! Form::label('tipo_investigador', 'Tipo de investigador', ['class' => 'control-label col-xs-3']) !!}
+				{!! Form::select('tipo_investigador', $tipos, null, ['class' => 'col-sm-5','placeholder' => 'Seleccione un tipo de investigador','required']) !!}
 			</div>
 
 			{{ Form::hidden('fecha_registro_investigador', $fecha_registro_investigador = date("Y-m-d")) }}

@@ -32,8 +32,8 @@ class investigadoresControlador extends Controller
 
     public function create()
     {
-        $lineas = linea_investigacion::all();
-        $tipos  = tipo_investigador::all();
+        $lineas = linea_investigacion::orderBy('denominacion', 'ASC')->pluck('denominacion', 'id'); //pluck lo que hace es traer los campos en forma de lista
+        $tipos  = tipo_investigador::orderBy('tipo_investigador', 'ASC')->pluck('tipo_investigador', 'tipo_id');
 
         return view('admin.investigadores.crearInvestigadores', [
             'lineas' => $lineas, 

@@ -9,12 +9,12 @@
 		
 		<div class="form-group">
 			{!! Form::label('titulo', 'Titulo', ['class' => 'control-label col-xs-3']) !!}
-			{!! Form::text('titulo', null, ['class' => 'col-sm-5', 'placeholder' => 'nombre del proyecto' ,'required']) !!}
+			{!! Form::textarea('titulo', null, ['class' => 'col-sm-5', 'placeholder' => 'nombre del proyecto' ,'required']) !!}
 		</div>
 
 		<div class="form-group">
 			{!! Form::label('resumen', 'Resumen', ['class' => 'control-label col-xs-3']) !!}
-			{!! Form::textarea('resumen', null, ['class' => 'col-sm-5', 'placeholder' => '' ,'required']) !!}
+			{!! Form::textarea('resumen', null, ['class' => 'col-sm-5', 'placeholder' => 'Resumen' ,'required']) !!}
 		</div>
 
 		<div class="form-group">
@@ -29,33 +29,16 @@
 		</div>
 
 		<div class="form-group">
-			<div class="col-xs-offset-3 col-xs-9">
-				<label class="radio-inline">
-					
-					<b>{{ 'Seleccione la linea de investigacion a la que pertenece el proyecto' }}</b><br>
-					@foreach($lineas as $linea)
-						<input type="radio" name="linea_investigacion_id" value= {!! $linea['id'] !!} checked>{{ $linea['denominacion']}}<br>
-					@endforeach
-				</label>
-			</div>
+			{!! Form::label('denominacion', 'Linea de investigacion', ['class' => 'control-label col-xs-3']) !!}
+			{!! Form::select('denominacion', $lineas, null, ['class' => 'col-sm-5','placeholder' => 'Seleccione una linea de investigacion','required']) !!}
 		</div>
 
 		{{ Form::hidden('fecha_registro_proyecto', $fecha_registro_proyecto = date("Y-m-d")) }}  
 
 		<div class="form-group">
-			<div class="col-xs-offset-3 col-xs-9">
-				<br>
-				<label class="radio-inline">
-					<b>{{ 'Seleccione el tipo de proyecto' }}</b><br>
-					@foreach($tipo_proyectos as $tipo_proyecto)
-						<input type="radio" name="tipo_proyecto" value= {!! $tipo_proyecto['proyecto_tipo_id'] !!} checked>{{ $tipo_proyecto['tipo_proyecto']}}<br>
-					@endforeach
-					
-				</label>
-			</div>
+			{!! Form::label('tipo_proyecto', 'Tipo de proyecto', ['class' => 'control-label col-xs-3']) !!}
+			{!! Form::select('tipo_proyecto', $tipo_proyectos, null, ['class' => 'col-sm-5','placeholder' => 'Seleccione un tipo de proyecto','required']) !!}
 		</div>
-
-		
 
 		<div class="form-group">
 			<div class="col-xs-offset-3 col-xs-9">

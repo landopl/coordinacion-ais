@@ -15,12 +15,8 @@
 			{!! Form::text('cedula', null, ['class' => 'col-sm-5', 'required']) !!}
 		</div>
 		<div class="form-group">
-			<select class="col-xs-offset-3" name="linea">
-			<option>Seleccione la linea de investigacion</option>
-				@foreach($lineas as $linea)
-					<option value="{{$linea->id}}">{{$linea->denominacion}}</option>
-				@endforeach
-			</select>	
+			{!! Form::label('denominacion', 'Linea de investigacion', ['class' => 'control-label col-xs-3']) !!}
+			{!! Form::select('denominacion', $lineas, null, ['class' => 'col-sm-5','placeholder' => 'Seleccione una linea de investigacion','required']) !!}
 		</div>
 		<div class="form-group">
 			<div class="col-xs-offset-3 col-xs-9"><br>
