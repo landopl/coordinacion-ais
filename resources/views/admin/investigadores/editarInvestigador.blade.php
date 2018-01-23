@@ -45,25 +45,13 @@
 			</div>
 
 			<div class="form-group">
-				<div class="col-xs-offset-3 col-xs-9">
-					<label class="radio-inline">			
-						<b>{{ 'Seleccione la linea de investigacion a la que pertenece el investigador' }}</b><br>
-						@foreach($lineas as $linea)
-							<input type="radio" name="id" value= {!! $linea['id'] !!} checked>{{ $linea['denominacion']}}<br>
-						@endforeach
-					</label>
-				</div>
+				{!! Form::label('denominacion', 'Linea de investigacion', ['class' => 'control-label col-xs-3']) !!}
+				{!! Form::select('denominacion', $lineas, null, ['class' => 'col-sm-5 select-denominacion','placeholder' => 'Seleccione una linea de investigacion','required']) !!}
 			</div>
 
 			<div class="form-group">
-				<div class="col-xs-offset-3 col-xs-9">
-					<label class="radio-inline">		
-						<b>{{ 'Seleccione el tipo de investigador' }}</b><br>
-						@foreach($tipos_investigadores as $tipo)
-							<input type="radio" name="tipo_id" value= {!! $tipo['tipo_id'] !!} checked>{{ $tipo['tipo_investigador']}}<br>
-						@endforeach
-					</label>
-				</div>
+				{!! Form::label('tipo_investigador', 'Tipo de investigador', ['class' => 'control-label col-xs-3']) !!}
+				{!! Form::select('tipo_investigador', $tipos_investigadores, null, ['class' => 'col-sm-5 select-tipo_investigador','placeholder' => 'Seleccione un tipo de investigador','required']) !!}
 			</div>
 
 			{{ Form::hidden('fecha_registro_investigador', $fecha_registro_investigador = date("Y-m-d")) }}                       
@@ -75,3 +63,16 @@
 		{!! Form::close() !!}
 	</div>
 @stop
+
+@section('js')
+	<script>
+		$('.select-denominacion').chosen({
+			
+		});
+
+		$('.select-tipo_investigador').chosen({
+			disable_search_threshold: 10
+		});
+	</script>
+
+@endsection

@@ -54,25 +54,17 @@
 			</div>
 
 			<div class="form-group">
-				<div class="col-xs-offset-3 col-xs-9">
-					<label class="radio-inline">			
-						<b><?php echo e('Seleccione la linea de investigacion a la que pertenece el investigador'); ?></b><br>
-						<?php $__currentLoopData = $lineas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $linea): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-							<input type="radio" name="id" value= <?php echo $linea['id']; ?> checked><?php echo e($linea['denominacion']); ?><br>
-						<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-					</label>
-				</div>
+				<?php echo Form::label('denominacion', 'Linea de investigacion', ['class' => 'control-label col-xs-3']); ?>
+
+				<?php echo Form::select('denominacion', $lineas, $investigadores->investigador_linea, ['class' => 'col-sm-5 select-denominacion','placeholder' => 'Seleccione una linea de investigacion','required']); ?>
+
 			</div>
 
 			<div class="form-group">
-				<div class="col-xs-offset-3 col-xs-9">
-					<label class="radio-inline">		
-						<b><?php echo e('Seleccione el tipo de investigador'); ?></b><br>
-						<?php $__currentLoopData = $tipos_investigadores; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tipo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-							<input type="radio" name="tipo_id" value= <?php echo $tipo['tipo_id']; ?> checked><?php echo e($tipo['tipo_investigador']); ?><br>
-						<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-					</label>
-				</div>
+				<?php echo Form::label('tipo_investigador', 'Tipo de investigador', ['class' => 'control-label col-xs-3']); ?>
+
+				<?php echo Form::select('tipo_investigador', $tipos_investigadores, null, ['class' => 'col-sm-5 select-tipo_investigador','placeholder' => 'Seleccione un tipo de investigador','required']); ?>
+
 			</div>
 
 			<?php echo e(Form::hidden('fecha_registro_investigador', $fecha_registro_investigador = date("Y-m-d"))); ?>                       
@@ -85,5 +77,18 @@
 		<?php echo Form::close(); ?>
 
 	</div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('js'); ?>
+	<script>
+		$('.select-denominacion').chosen({
+			
+		});
+
+		$('.select-tipo_investigador').chosen({
+			disable_search_threshold: 10
+		});
+	</script>
+
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('admin.plantilla.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

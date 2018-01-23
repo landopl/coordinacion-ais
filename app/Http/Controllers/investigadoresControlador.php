@@ -17,7 +17,7 @@ class investigadoresControlador extends Controller
     
     public function index(Request $request)// PASO MANUALMENTE EL REQUEST $REQUEST PARA PODER USAR EL BUSCADOR 
     {
-        $investigadores        = investigador::Investigador($request->cedula)->orderBy('id', 'ASC')->paginate(5);
+        $investigadores        = investigador::Buscar($request)->orderBy('id', 'ASC')->paginate(5);
         $lineas                = linea_investigacion::all();
         $lineas_investigadores = linea_investigador::all();
         $tipos_investigadores  = tipo_investigador::all();
@@ -68,9 +68,10 @@ class investigadoresControlador extends Controller
     public function edit($id)
     {
         $investigadores        = investigador::find($id);
-        $lineas                = linea_investigacion::all();
+        $investigadores->investigador_linea;
+        $lineas                = linea_investigacion::orderBy('denominacion', 'ASC')->pluck('denominacion', 'id');
         $lineas_investigadores = linea_investigador::all();
-        $tipos_investigadores  = tipo_investigador::all();
+        $tipos_investigadores  = tipo_investigador::orderBy('tipo_investigador', 'ASC')->pluck('tipo_investigador', 'tipo_id');
 
         return view('admin.investigadores.editarInvestigador', [
             'investigadores'        => $investigadores, 

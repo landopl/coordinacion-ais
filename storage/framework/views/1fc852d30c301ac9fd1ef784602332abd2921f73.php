@@ -54,17 +54,14 @@
 			<div class="form-group">
 				<?php echo Form::label('denominacion', 'Linea de investigacion', ['class' => 'control-label col-xs-3']); ?>
 
-				<?php echo Form::select('denominacion', $lineas, null, ['class' => 'col-sm-5','placeholder' => 'Seleccione una linea de investigacion','required']); ?>
-
+				<?php echo Form::select('denominacion', $lineas, null, ['class' => 'col-sm-5 select-denominacion','placeholder' => 'Seleccione una linea de investigacion','required']); ?> <!-- en la clase select-denominacion es para modificar el select con el estilo de chosen de jquery, que con el script de abajo hace las modificaciones-->
 			</div>
 
 			<div class="form-group">
 				<?php echo Form::label('tipo_investigador', 'Tipo de investigador', ['class' => 'control-label col-xs-3']); ?>
 
-				<?php echo Form::select('tipo_investigador', $tipos, null, ['class' => 'col-sm-5','placeholder' => 'Seleccione un tipo de investigador','required']); ?>
+				<?php echo Form::select('tipo_investigador', $tipos, null, ['class' => 'col-sm-5 select-tipo_investigador','placeholder' => 'Seleccione un tipo de investigador','required']); ?>
 
-
-				
 			</div>
 
 			<?php echo e(Form::hidden('fecha_registro_investigador', $fecha_registro_investigador = date("Y-m-d"))); ?>
@@ -80,4 +77,18 @@
 
 	</div>	
 <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('js'); ?>
+	<script>
+		$('.select-denominacion').chosen({
+			
+		});
+
+		$('.select-tipo_investigador').chosen({
+			disable_search_threshold: 10
+		});
+	</script>
+
+<?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('admin.plantilla.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

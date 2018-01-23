@@ -9,7 +9,7 @@
 		
 		<div class="form-group">
 			{!! Form::label('titulo', 'Titulo', ['class' => 'control-label col-xs-3']) !!}
-			{!! Form::textarea('titulo', null, ['class' => 'col-sm-5', 'placeholder' => 'nombre del proyecto' ,'required']) !!}
+			{!! Form::textarea('titulo', null, ['class' => 'col-sm-5 trumbowyg-textarea', 'placeholder' => 'nombre del proyecto' ,'required']) !!}
 		</div>
 
 		<div class="form-group">
@@ -30,14 +30,14 @@
 
 		<div class="form-group">
 			{!! Form::label('denominacion', 'Linea de investigacion', ['class' => 'control-label col-xs-3']) !!}
-			{!! Form::select('denominacion', $lineas, null, ['class' => 'col-sm-5','placeholder' => 'Seleccione una linea de investigacion','required']) !!}
+			{!! Form::select('denominacion', $lineas, null, ['class' => 'col-sm-5 select-estilo','placeholder' => 'Seleccione una linea de investigacion','required']) !!}
 		</div>
 
 		{{ Form::hidden('fecha_registro_proyecto', $fecha_registro_proyecto = date("Y-m-d")) }}  
 
 		<div class="form-group">
 			{!! Form::label('tipo_proyecto', 'Tipo de proyecto', ['class' => 'control-label col-xs-3']) !!}
-			{!! Form::select('tipo_proyecto', $tipo_proyectos, null, ['class' => 'col-sm-5','placeholder' => 'Seleccione un tipo de proyecto','required']) !!}
+			{!! Form::select('tipo_proyecto', $tipo_proyectos, null, ['class' => 'col-sm-5 select-tipo_proyecto','placeholder' => 'Seleccione un tipo de proyecto','required']) !!}
 		</div>
 
 		<div class="form-group">
@@ -50,3 +50,18 @@
 	{!! Form::close() !!}
 	</div>
 @stop
+
+@section('js')
+	<script>
+		$('.select-estilo').chosen({
+			
+		});
+		$('.select-tipo_proyecto').chosen({
+			disable_search_threshold: 10
+		});
+
+		$('.trumbowyg-textarea').trumbowyg();
+
+	</script>
+
+@endsection

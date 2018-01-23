@@ -15,9 +15,9 @@
                   <span class="input-group-addon" id="titulo"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
                 </div>
               {!!Form::close()!!}
-
       			</div>
       			<!-- /.box-header -->
+            
       			<div class="box-body table-responsive no-padding">
       				<table class="table table-hover">
      					 <tr>

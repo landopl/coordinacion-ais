@@ -16,6 +16,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
 	Route::resource('coordinadores', 'coordinadoresControlador');
 
+
 	//Route::resource('sesion', 'loginControlador');
 
 	//ruta tipo get.  envia el id del proyecto para ser eliminado con el metodo destry. 'uses' es para definir que controlador usara y seguido de @destroy que se refiere al metodo que esta dentro del controlador.  'as' es para definir la direccion de la vista

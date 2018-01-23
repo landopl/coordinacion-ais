@@ -40,8 +40,10 @@ class investigador extends Model
     }
 
     //SCOPE BUSCAR--------------------------------
-    public function scopeInvestigador($query, $cedula)
-    {
-        return $query->where('cedula', 'LIKE', "%$cedula%");
+    public function scopeBuscar($query, $data){
+      $cedula= $data->cedula;
+      $nombre= $data->nombre;
+      $apellido= $data->apellido;
+      return $query->where('cedula', 'LIKE', "%$cedula%")->where('nombre', 'LIKE', "%$nombre%")->where('apellido', 'LIKE', "%$apellido%");
     }
 }

@@ -27,7 +27,4 @@ class linea_investigador extends Model
     {
         return $this->belongsToMany('App\linea_investigacion');
     }
-
-
-
 }

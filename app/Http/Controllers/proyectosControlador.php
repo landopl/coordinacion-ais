@@ -88,8 +88,8 @@ class proyectosControlador extends Controller
     public function edit($id)
     {
         $proyectos      = proyecto::find($id);
-        $lineas         = linea_investigacion::all();
-        $tipo_proyectos = proyecto_nombre_tipo::all();
+        $lineas         = linea_investigacion::orderBy('denominacion', 'ASC')->pluck('denominacion', 'id');
+        $tipo_proyectos = proyecto_nombre_tipo::orderBy('tipo_proyecto', 'ASC')->pluck('tipo_proyecto', 'proyecto_tipo_id');
        
         return view('admin.proyectos.editarProyectos', [
             'proyectos'      => $proyectos, 

@@ -60,7 +60,7 @@
 
                           {{-- <td><a href="{{ route('coordinadores.edit', $coordinador->id) }}" class="btn btn-default btn-flat">Editar</a></td> --}}
 
-                          <td><a href="{{ route('admin.coordinadores.destroy', $coordinador->id) }}" onclick="return confirm('¿Esta seguro que desea eliminar el investigador?')" class="btn btn-default btn-flat">Eliminar</a></td>
+                          <td><a href="{{ route('admin.coordinadores.destroy', $coordinador->id) }}" onclick="return confirm('¿Esta seguro que desea eliminar el investigador?')" class="btn btn-success btn-flat">Eliminar</a></td>
                         </tr>
                       @endforeach
 				            </table>

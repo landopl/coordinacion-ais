@@ -8,7 +8,7 @@
     {!! Form::open(['route' => ['proyectos.update', $proyectos->id], 'method' => 'PUT']) !!}
       <div class="form-group">
         {!! Form::label('titulo', 'Titulo', ['class' => 'control-label col-xs-3']) !!}
-        {!! Form::text('titulo', $proyectos->titulo, ['class' => 'col-sm-5', 'placeholder' => 'nombre del proyecto' ,'required']) !!}
+        {!! Form::textarea('titulo', $proyectos->titulo, ['class' => 'col-sm-5', 'placeholder' => 'nombre del proyecto' ,'required']) !!}
       </div>
 
       <div class="form-group">
@@ -27,28 +27,16 @@
       </div>
 
       <div class="form-group">
-        <div class="col-xs-offset-3 col-xs-9">
-          <label class="radio-inline">
-            <b>{{ 'Seleccione la linea de investigacion a la que pertenece el proyecto' }}</b><br>
-            @foreach($lineas as $linea)
-              <input type="radio" name="linea_investigacion_id" value= {!! $linea['id'] !!} checked>{{ $linea['denominacion']}}<br>
-            @endforeach
-          </label>
-        </div>
-      </div>
+      {!! Form::label('denominacion', 'Linea de investigacion', ['class' => 'control-label col-xs-3']) !!}
+      {!! Form::select('denominacion', $lineas, null, ['class' => 'col-sm-5 select-estilo','placeholder' => 'Seleccione una linea de investigacion','required']) !!}
+    </div>
 
-      {{ Form::hidden('fecha_registro_proyecto', $fecha_registro_proyecto = date("Y-m-d")) }}  
-      <div class="form-group">
-        <div class="col-xs-offset-3 col-xs-9">
-          <br>
-          <label class="radio-inline">
-            <b>{{ 'Seleccione el tipo de proyecto' }}</b><br>
-            @foreach($tipo_proyectos as $tipo_proyecto)
-              <input type="radio" name="tipo_proyecto" value= {!! $tipo_proyecto['proyecto_tipo_id'] !!} checked>{{ $tipo_proyecto['tipo_proyecto']}}<br>
-            @endforeach
-          </label>
-        </div>
-      </div>
+    {{ Form::hidden('fecha_registro_proyecto', $fecha_registro_proyecto = date("Y-m-d")) }}  
+
+    <div class="form-group">
+      {!! Form::label('tipo_proyecto', 'Tipo de proyecto', ['class' => 'control-label col-xs-3']) !!}
+      {!! Form::select('tipo_proyecto', $tipo_proyectos, null, ['class' => 'col-sm-5 select-tipo_proyecto','placeholder' => 'Seleccione un tipo de proyecto','required']) !!}
+    </div>
 
       <div class="form-group">
         <div class="col-xs-offset-3 col-xs-9">
@@ -58,3 +46,16 @@
     {!! Form::close() !!}
   </div>
 @stop
+
+@section('js')
+  <script>
+    $('.select-estilo').chosen({
+      
+    });
+    $('.select-tipo_proyecto').chosen({
+      disable_search_threshold: 10
+    });
+
+  </script>
+
+@endsection

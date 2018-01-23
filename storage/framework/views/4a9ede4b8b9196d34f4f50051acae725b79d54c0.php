@@ -7,12 +7,35 @@
       			<div class="box-header">
         				<h3 class="box-title">Listado de Investigadores</h3>
 
+              <!--BUSCAR INVESTIGADORES POR CEDULA-->
               <?php echo Form::open(['route' => 'investigadores.index', 'method' => 'GET', 'class' => 'navbar-form pull-right']); ?>
 
                 <div class="input-group">
                   <?php echo Form::text('cedula', null, ['class' => 'form-control', 'placeholder' => 'Buscar por cedula', 'aria-describedby' => 'cedula']); ?>
 
                   <span class="input-group-addon" id="cedula"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                </div>
+              <?php echo Form::close(); ?>
+
+
+              <!--BUSCAR INVESTIGADORES POR APELLIDO-->
+              <?php echo Form::open(['route' => 'investigadores.index', 'method' => 'GET', 'class' => 'navbar-form pull-right']); ?>
+
+                <div class="input-group">
+                  <?php echo Form::text('apellido', null, ['class' => 'form-control', 'placeholder' => 'Buscar por apellido', 'aria-describedby' => 'apellido']); ?>
+
+                  <span class="input-group-addon" id="apellido"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                </div>
+              <?php echo Form::close(); ?>
+
+
+              <!--BUSCAR INVESTIGADORES POR NOMBRE-->
+              <?php echo Form::open(['route' => 'investigadores.index', 'method' => 'GET', 'class' => 'navbar-form pull-right']); ?>
+
+                <div class="input-group">
+                  <?php echo Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Buscar por nombre', 'aria-describedby' => 'nombre']); ?>
+
+                  <span class="input-group-addon" id="nombre"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
                 </div>
               <?php echo Form::close(); ?>
 

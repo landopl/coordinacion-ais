@@ -18,7 +18,7 @@
 		<div class="form-group">
 			<?php echo Form::label('denominacion', 'Linea de investigacion', ['class' => 'control-label col-xs-3']); ?>
 
-			<?php echo Form::select('denominacion', $lineas, null, ['class' => 'col-sm-5','placeholder' => 'Seleccione una linea de investigacion','required']); ?>
+			<?php echo Form::select('denominacion', $lineas, null, ['class' => 'col-sm-5 select-coordinador','placeholder' => 'Seleccione una linea de investigacion','required']); ?>
 
 		</div>
 		<div class="form-group">
@@ -30,5 +30,14 @@
 		<?php echo Form::close(); ?>
 
 	</div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('js'); ?>
+	<script>
+		$('.select-coordinador').chosen({
+			
+		});
+	</script>
+
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('admin.plantilla.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
