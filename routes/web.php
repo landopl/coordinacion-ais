@@ -16,6 +16,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
 	Route::resource('coordinadores', 'coordinadoresControlador');
 
+	Route::resource('investigadoresProyectos', 'investigadoresProyectosControlador');
+
 
 	//Route::resource('sesion', 'loginControlador');
 

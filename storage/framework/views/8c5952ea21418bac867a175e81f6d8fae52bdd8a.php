@@ -56,7 +56,7 @@
 			<div class="form-group">
 				<?php echo Form::label('denominacion', 'Linea de investigacion', ['class' => 'control-label col-xs-3']); ?>
 
-				<?php echo Form::select('denominacion', $lineas, $investigadores->investigador_linea, ['class' => 'col-sm-5 select-denominacion','placeholder' => 'Seleccione una linea de investigacion','required']); ?>
+				<?php echo Form::select('denominacion', $lineas, null, ['class' => 'col-sm-5 select-denominacion','placeholder' => 'Seleccione una linea de investigacion','required']); ?>
 
 			</div>
 
