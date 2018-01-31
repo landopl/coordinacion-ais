@@ -27,8 +27,7 @@ class proyectosRequest extends FormRequest
             'titulo'                 => 'min:4|required|unique:proyectos',
             'resumen'                => 'min:4|required',
             'objetivos'              => 'min:4|required',
-            'justificacion'          => 'min:4|required',
-            'linea_investigacion_id' => 'required'
+            'justificacion'          => 'min:4|required'
         ];
     }
 }

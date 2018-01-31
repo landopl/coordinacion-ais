@@ -42,9 +42,8 @@ class proyectosControlador extends Controller
 
     public function create()
     {
-        $lineas = linea_investigacion::orderBy('denominacion', 'ASC')->pluck('denominacion', 'id');
-        $lineas->toArray();
-        $tipo_proyectos = proyecto_nombre_tipo::orderBy('tipo_proyecto', 'ASC')->pluck('tipo_proyecto', 'proyecto_tipo_id');
+        $lineas = linea_investigacion::all();
+        $tipo_proyectos = proyecto_nombre_tipo::all();
         
         return view('admin.proyectos.crear', [
             'lineas'         => $lineas, 

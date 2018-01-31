@@ -66,7 +66,7 @@ class investigadoresProyectosControlador extends Controller
     public function edit($id)
     {
         $investigador        = investigador::find($id);
-        $proyectos    = proyecto::find($id);
+        $proyectos    = proyecto::orderBy('titulo', 'ASC')->pluck('titulo', 'id');
 
         return view('admin.investigadoresProyectos.asignarInvestigador')
                                                                         ->with('investigador', $investigador)

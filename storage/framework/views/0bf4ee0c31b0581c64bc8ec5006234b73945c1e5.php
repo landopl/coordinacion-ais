@@ -1,3 +1,5 @@
+	
+
 <?php $__env->startSection('content'); ?>
 
 	<h1>Asignar investigador a un proyecto</h1>
@@ -5,7 +7,7 @@
 	<br><br>
 
 	<div class="form-horizontal">
-		<?php echo Form::open(['route' =>['investigadoresProyectos.update', $proyectos->id], 'method' => 'PUT']); ?>
+		<?php echo Form::open(['route' =>['investigadoresProyectos.update', $investigador->id], 'method' => 'PUT']); ?>
 
 
 			<div class="form-group">		
@@ -30,13 +32,13 @@
 			</div>
 
 			<div class="form-group">
-				<select>
-     				<option>Seleccione un proyecto</option>
-     				<?php $__currentLoopData = $proyectos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $proyecto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-    					<option value="<?php echo e($proyecto->id); ?>"><?php echo e($proyecto->titulo); ?></option>
-     				<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-				</select>
+				<?php echo Form::label('titulo', 'titulo', ['class' => 'control-label col-xs-3']); ?>
+
+				<?php echo Form::select('titulo', $proyectos, null, ['class' => 'col-sm-5 proyectos','placeholder' => 'Seleccione un proyecto','required']); ?>
+
 			</div>
+
+			
 
 			                       
 			<div class="form-group">
@@ -52,9 +54,6 @@
 
 <?php $__env->startSection('js'); ?>
 	<script>
-		$('.select-denominacion').chosen({
-			
-		});
 
 		$('.proyectos').chosen({
 			disable_search_threshold: 10

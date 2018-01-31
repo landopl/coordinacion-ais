@@ -1,4 +1,4 @@
-@extends('admin.plantilla.layout')
+	@extends('admin.plantilla.layout')
 
 @section('content')
 
@@ -7,7 +7,7 @@
 	<br><br>
 
 	<div class="form-horizontal">
-		{!! Form::open(['route' =>['investigadoresProyectos.update', $proyectos->id], 'method' => 'PUT']) !!}
+		{!! Form::open(['route' =>['investigadoresProyectos.update', $investigador->id], 'method' => 'PUT']) !!}
 
 			<div class="form-group">		
 				{!! Form::label('nombre', 'Nombre', ['class' => 'control-label col-xs-3']) !!}
@@ -25,13 +25,11 @@
 			</div>
 
 			<div class="form-group">
-				<select>
-     				<option>Seleccione un proyecto</option>
-     				@foreach($proyectos as $proyecto)
-    					<option value="{{ $proyecto->id }}">{{ $proyecto->titulo }}</option>
-     				@endforeach
-				</select>
+				{!! Form::label('titulo', 'titulo', ['class' => 'control-label col-xs-3']) !!}
+				{!! Form::select('titulo', $proyectos, null, ['class' => 'col-sm-5 proyectos','placeholder' => 'Seleccione un proyecto','required']) !!}
 			</div>
+
+			
 
 			                       
 			<div class="form-group">
@@ -45,9 +43,6 @@
 
 @section('js')
 	<script>
-		$('.select-denominacion').chosen({
-			
-		});
 
 		$('.proyectos').chosen({
 			disable_search_threshold: 10

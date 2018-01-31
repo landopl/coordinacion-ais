@@ -29,15 +29,25 @@
 		</div>
 
 		<div class="form-group">
-			{!! Form::label('denominacion', 'Linea de investigacion', ['class' => 'control-label col-xs-3']) !!}
-			{!! Form::select('denominacion', $lineas, null, ['class' => 'col-sm-5 select-estilo','placeholder' => 'Seleccione una linea de investigacion','required']) !!}
+			<select class="col-xs-offset-3" name="linea_investigacion_id">
+				<option>Seleccione la linea de investigacion</option>
+					@foreach($lineas as $linea)
+						<option value="{{$linea->id}}">{{$linea->denominacion}}</option>
+					@endforeach
+			</select>
+			
 		</div>
 
 		{{ Form::hidden('fecha_registro_proyecto', $fecha_registro_proyecto = date("Y-m-d")) }}  
 
 		<div class="form-group">
-			{!! Form::label('tipo_proyecto', 'Tipo de proyecto', ['class' => 'control-label col-xs-3']) !!}
-			{!! Form::select('tipo_proyecto', $tipo_proyectos, null, ['class' => 'col-sm-5 select-tipo_proyecto','placeholder' => 'Seleccione un tipo de proyecto','required']) !!}
+			<select class="col-xs-offset-3" name="tipo_proyecto">
+				<option>Seleccione el tipo de proyecto</option>
+					@foreach($tipo_proyectos as $tipo_proyecto)
+						<option value="{{$tipo_proyecto->proyecto_tipo_id}}">{{$tipo_proyecto->tipo_proyecto}}</option>
+					@endforeach
+			</select>
+			
 		</div>
 
 		<div class="form-group">

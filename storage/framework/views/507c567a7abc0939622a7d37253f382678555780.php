@@ -35,19 +35,25 @@
 		</div>
 
 		<div class="form-group">
-			<?php echo Form::label('denominacion', 'Linea de investigacion', ['class' => 'control-label col-xs-3']); ?>
-
-			<?php echo Form::select('denominacion', $lineas, null, ['class' => 'col-sm-5 select-estilo','placeholder' => 'Seleccione una linea de investigacion','required']); ?>
-
+			<select class="col-xs-offset-3" name="linea_investigacion_id">
+				<option>Seleccione la linea de investigacion</option>
+					<?php $__currentLoopData = $lineas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $linea): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+						<option value="<?php echo e($linea->id); ?>"><?php echo e($linea->denominacion); ?></option>
+					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+			</select>
+			
 		</div>
 
 		<?php echo e(Form::hidden('fecha_registro_proyecto', $fecha_registro_proyecto = date("Y-m-d"))); ?>  
 
 		<div class="form-group">
-			<?php echo Form::label('tipo_proyecto', 'Tipo de proyecto', ['class' => 'control-label col-xs-3']); ?>
-
-			<?php echo Form::select('tipo_proyecto', $tipo_proyectos, null, ['class' => 'col-sm-5 select-tipo_proyecto','placeholder' => 'Seleccione un tipo de proyecto','required']); ?>
-
+			<select class="col-xs-offset-3" name="tipo_proyecto">
+				<option>Seleccione el tipo de proyecto</option>
+					<?php $__currentLoopData = $tipo_proyectos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tipo_proyecto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+						<option value="<?php echo e($tipo_proyecto->proyecto_tipo_id); ?>"><?php echo e($tipo_proyecto->tipo_proyecto); ?></option>
+					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+			</select>
+			
 		</div>
 
 		<div class="form-group">
